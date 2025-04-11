@@ -233,7 +233,7 @@
 				<section id="two" class="wrapper alt style2">
 					<section id="education" class="spotlight">
 						<div class="image" style="display: flex; justify-content: center;">
-							<img id="theme-image" src="images/dal-logo.png" style="width: 475px; height: auto;" alt="Dalhousie University" />
+							<img id="theme-image-education" src="images/dal-logo.png" style="width: 475px; height: auto;" alt="Dalhousie University" />
 						</div>
 						<div class="content">
 							<h2>Bachelor of Computer Science</h2>
@@ -242,7 +242,10 @@
 					</section>
 				
 					<section id = "Work" class="spotlight">
-						<div class="image" style="display: flex; justify-content: center; align-items: center;"><img src="images/dal-logo.png" style="width: 475px; height: auto;" alt="" /></div><div class="content">
+						<div class="image" style="display: flex; justify-content: center; align-items: center;">
+							<img id="theme-image-research" src="images/dal-logo.png" style="width: 475px; height: auto;" alt="Research Assistant" />
+						</div>
+						<div class="content">
 							<h2>Research Assistant – WordPress</h2>
 							<h3>Sep 2023 – Dec 2024</h3>
 							<p>As a Research Assistant at Dalhousie University, I led the development and maintenance of a WordPress site to host a course glossary for Brightspace. I customized the site’s design with CSS/HTML and implemented Solarized color schemes to ensure visual consistency across entries. My work included structuring content for clarity, managing the insertion of images with proper attribution, and setting up expandable references for easy navigation. I worked closely with faculty to ensure the glossary was both academically accurate and user-friendly, enhancing accessibility and ease of use for students.</p>
@@ -360,7 +363,8 @@
 			<script>
 				// Theme toggle functionality
 				const toggleSwitch = document.querySelector('#checkbox');
-				const themeImage = document.querySelector('#theme-image');  // Ensure themeImage variable is defined properly
+				const themeImageEdu = document.querySelector('#theme-image-education');
+				const themeImageResearch = document.querySelector('#theme-image-research');
 				const currentTheme = localStorage.getItem('theme') || 'dark';
 
 				// Set initial theme based on stored preference or default to dark
@@ -378,10 +382,12 @@
 
 				// Function to update image source based on the theme
 				function updateImageSource(theme) {
-					if (theme === 'light') {
-						themeImage.src = 'images/dal-logo.png';  // Use light-themed image
+					if (theme === 'dark') {
+						themeImageEdu.src = 'images/dal-logo.png';  // Use light-themed image for education
+						themeImageResearch.src = 'images/dal-logo.png';  // Use light-themed image for research
 					} else {
-						themeImage.src = 'images/dal-logo-vertical-black.png';   // Use dark-themed image
+						themeImageEdu.src = 'images/dal-logo-vertical-black.png';  // Use dark-themed image for education
+						themeImageResearch.src = 'images/dal-logo-vertical-black.png';  // Use dark-themed image for research
 					}
 				}
 			</script>
