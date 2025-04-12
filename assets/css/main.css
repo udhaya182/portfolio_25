@@ -3632,7 +3632,7 @@ input, select, textarea {
 			align-items: center;
 			padding: 5px 50px;
 			z-index: 1000; /* Ensures it's above other elements */
-			justify-content: flex-end;	
+			background-color: var(--bg-color);
 			padding: 15px 50px;
 		}
 		#nav ul {
@@ -3641,13 +3641,54 @@ input, select, textarea {
 			gap: 20px;
 			margin: 0;
 			padding: 0;
-
+		}
+		
+		/* Hamburger menu button - hidden by default on larger screens */
+		.menuToggle {
+			display: none;
+			cursor: pointer;
+			position: relative;
+			z-index: 1001;
+		}
+		
+		/* Hamburger icon styling */
+		.hamburger {
+			display: inline-block;
+			width: 30px;
+			height: 2px;
+			background-color: var(--nav-font);
+			position: relative;
+			transition: background-color 0.3s ease;
+		}
+		
+		.hamburger:before,
+		.hamburger:after {
+			content: '';
+			display: block;
+			width: 30px;
+			height: 2px;
+			background-color: inherit;
+			position: absolute;
+			transition: transform 0.3s ease;
+		}
+		
+		.hamburger:before {
+			transform: translateY(-8px);
+			position: absolute;
+			top: -8px;
+			transition: transform 0.3s ease, top 0.3s ease;
+		}
+		
+		.hamburger:after {
+			transform: translateY(8px);
+			position: absolute;
+			top: 8px;
+			transition: transform 0.3s ease, top 0.3s ease;
 		}
 
 				#header nav > ul > li {
 					display: inline-block;
 					padding: 0;
-							
 				}
 
 					#header nav > ul > li > a {
@@ -3664,16 +3705,6 @@ input, select, textarea {
 					#nav ul li a:hover {
 						color: var(--nav-hover);
 					}
-							#header nav > ul > li > a.menuToggle:after {
-								background-image: url("images/bars.svg");
-								background-position: right center;
-								background-repeat: no-repeat;
-								content: '';
-								display: inline-block;
-								height: 3.75em;
-								vertical-align: top;
-								width: 2em;
-							}
 
 							@media screen and (max-width: 736px) {
 
@@ -3730,7 +3761,7 @@ input, select, textarea {
 		overflow: hidden;
 		position: relative;
 		text-align: center;
-		background-color: #1b0c2c;
+		background-color: --bg-color
 	}
 
 		#banner h2 {
@@ -4123,6 +4154,96 @@ input, select, textarea {
 			}
 
 		}
+
+/* Mobile Navigation */
+@media screen and (max-width: 768px) {
+	#header nav {
+		padding: 15px 20px;
+	}
+	
+	.menuToggle {
+		display: block; /* Show the hamburger menu on mobile */
+		z-index: 1001;
+	}
+	
+	#nav ul {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100vh;
+		background-color: var(--bg-color);
+		flex-direction: column;
+		justify-content: flex-start; /* Aligns items starting from the top */
+		align-items: center;
+		transform: translateY(-100%);
+		transition: transform 0.5s ease;
+		z-index: 999;
+		display: flex; /* Always display flex but transformed out of view */
+		padding-top: 60px; /* Space for the theme toggle */
+	}
+	
+	#header.navbar-active #nav ul {
+		transform: translateY(0); /* Slide in from top when active */
+	}
+	
+	#nav ul li {
+		width: 100%;
+		text-align: center;
+		margin: 15px 0;
+	}
+	
+	#nav ul li a {
+		padding: 15px 0;
+		margin-bottom: 0;
+		width: 100%;
+		display: block;
+		font-size: 1.2em; /* Slightly larger text for mobile menu */
+	}
+	
+	.menuToggle + ul .theme-switch-wrapper {
+		position: absolute;
+		top: 10px; /* Keeps it in place at the top */
+		right: 20px;
+	}
+	
+	/* Active menu icon transformation */
+	#header.navbar-active .hamburger {
+		background-color: transparent;
+	}
+	
+	#header.navbar-active .hamburger:before {
+		transform: rotate(45deg);
+		top: 0;
+	}
+	
+	#header.navbar-active .hamburger:after {
+		transform: rotate(-45deg);
+		top: 0;
+	}
+	
+	/* Ensure the banner content doesn't overlap with the navbar */
+	#banner {
+		padding-top: 120px;
+	}
+	
+	/* Add overlay when menu is active */
+	#header.navbar-active:before {
+		content: '';
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.5);
+		z-index: 998;
+	}
+	
+	/* Support for nav ul.active class for alternative activation method */
+	#nav ul.active {
+		transform: translateY(0);
+	}
+}
 
 /* Landing */
 
