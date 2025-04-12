@@ -33,6 +33,7 @@ section, summary, time, mark, audio, video {
 	--footer-iconh : #fff;
 	--nav-hover : #cbb0e9;
 	--nav-font: #fff;
+	--nav-bg-transparent: rgba(27, 12, 44, 0.8); /* Semi-transparent navbar for dark theme */
 }
 
 [data-theme="light"] {
@@ -44,6 +45,7 @@ section, summary, time, mark, audio, video {
 	--footer-iconh : #936BBF;
 	--nav-hover :#936BBF;
 	--nav-font:#1b0c2c;
+	--nav-bg-transparent: rgba(221, 211, 238, 0.8); /* Semi-transparent navbar for light theme */
 }
 body, .header, .footer, .banner, .section, .article, .inner, .feature {
     background-color: var(--bg-color);
@@ -3630,10 +3632,10 @@ input, select, textarea {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			padding: 5px 50px;
+			padding: 5px 50px 0.25em 50px; /* Further reduced bottom padding */
 			z-index: 1000; /* Ensures it's above other elements */
-			background-color: var(--bg-color);
-			padding: 15px 50px;
+			background-color: var(--nav-bg-transparent); /* Using theme variable for transparency */
+			transition: all 0.3s ease; /* Smooth transition effect */
 		}
 		#nav ul {
 			list-style: none;
@@ -3699,7 +3701,7 @@ input, select, textarea {
 						letter-spacing: 0.225em;
 						padding: 0 1.5em;
 						text-transform: uppercase;
-						margin-bottom: 50px;
+						margin-bottom: 0; /* Removed bottom margin */
 					}
 
 					#nav ul li a:hover {
@@ -4165,7 +4167,8 @@ input, select, textarea {
 /* Mobile Navigation */
 @media screen and (max-width: 768px) {
 	#header nav {
-		padding: 15px 20px;
+		padding: 15px 20px 0.25em 20px; /* Further reduced bottom padding for mobile */
+		background-color: var(--nav-bg-transparent); /* Semi-transparent background for mobile */
 	}
 	
 	.menuToggle {
