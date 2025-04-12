@@ -3887,7 +3887,7 @@ input, select, textarea {
 		@media screen and (max-width: 736px) {
 
 			#banner {
-				padding: 7em 3em 5em 3em ;
+				padding: 4em 3em 5em 3em; /* Further reduced top padding from 5em to 4em */
 				height: auto;
 				min-height: 0;
 			}
@@ -3903,7 +3903,11 @@ input, select, textarea {
 				#banner .more {
 					display: none;
 				}
-
+				
+				#banner .inner {
+					padding-top: 10px; /* Further reduced space above content */
+					margin-top: -20px; /* Negative margin to pull content up */
+				}
 		}
 
 	body.is-preload #banner h2 {
@@ -4167,6 +4171,7 @@ input, select, textarea {
 		padding: 15px 20px 0.25em 20px; /* Further reduced bottom padding for mobile */
 		background-color: var(--nav-bg-transparent); /* Semi-transparent background for mobile */
 	}
+	
 	
 	.menuToggle {
 		display: block; /* Show the hamburger menu on mobile */
