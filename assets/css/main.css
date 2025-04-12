@@ -4155,6 +4155,13 @@ input, select, textarea {
 
 		}
 
+/* Desktop Navigation - Align navbar to the right */
+@media screen and (min-width: 980px) {
+  #header nav {
+    justify-content: flex-end; /* Align navigation to the right on desktop */
+  }
+}
+
 /* Mobile Navigation */
 @media screen and (max-width: 768px) {
 	#header nav {
